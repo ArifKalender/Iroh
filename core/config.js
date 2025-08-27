@@ -49,6 +49,7 @@ function save() {
 	if (typeof config.BarredUsers === 'undefined') config.BarredUsers = [];
 	if (typeof config.Ops === 'undefined') config.Ops = [];
 	if (typeof config.CommandPrefix === 'undefined') config.CommandPrefix = "!";
+	if (typeof config.UpdateURL === 'undefined') config.UpdateURL = "https://github.com/StrangeOne101/Iroh";
 	try {
 		fs.writeFileSync(file, JSON.stringify(config));
 	} catch (e) {
@@ -105,6 +106,10 @@ function getRoles(group) {
 	return config.Roles && Array.isArray(config.Roles[group]) ? config.Roles[group] : [];
 }
 
+function getUpdateURL() {
+	return config.UpdateURL;
+}
+
 //ES6
 module.exports = {
 	getToken,
@@ -113,6 +118,7 @@ module.exports = {
 	getSplit,
 	getIgnoredChannels,
 	getCommandPrefix,
+	getUpdateURL,
 	isOp,
 	unbarUser,
 	isUserBarred,
